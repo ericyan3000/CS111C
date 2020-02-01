@@ -19,6 +19,11 @@ public class StudentTester {
 		
 		System.out.println("Are they equal? " + s1.equals(s4));
 		System.out.println("Are they aliases? " + (s1==s4));
+		
+		Student s = null;
+		if(s != null && s.equals(s)) {
+			System.out.println("paid");
+		} 
 	}
 
 }

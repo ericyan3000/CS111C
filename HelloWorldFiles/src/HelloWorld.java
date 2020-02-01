@@ -1,6 +1,11 @@
+import java.util.Scanner; 
 
 public class HelloWorld {
 	public static void main (String[] args) {
-		System.out.println("Hello World");
+
+		String s1 = "janeeyreemailcom";
+		int index = s1.indexOf('.');
+		System.out.println(index);
 	}
+
 }
