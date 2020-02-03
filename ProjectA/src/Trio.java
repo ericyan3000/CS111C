@@ -38,7 +38,7 @@ public class Trio<T> {
 	
 	@Override
 	public String toString() {
-		return item1 + "\t" + item2 + "\t" + item3;
+		return item1 + ", " + item2 + ", " + item3;
 	}
 	
 	public void reset(T item) {
@@ -48,7 +48,13 @@ public class Trio<T> {
 	}
 	
 	public int count(Object item) {
-		return 1;
+		int countItem = 0;
+		
+		countItem += item.equals(item1) ? 1 : 0;
+		countItem += item.equals(item2) ? 1 : 0;
+		countItem += item.equals(item3) ? 1 : 0;
+		
+		return countItem;
 	}
 	
 	public boolean hasDuplicates() {
@@ -56,18 +62,17 @@ public class Trio<T> {
 	}
 	
 	public boolean equals(Object other) {
-		this.count(item1);
 		
 		if (other instanceof Trio<?>) {
 			Trio<?> otherTrio = (Trio<?>) other;
 			
-			// check if otherTrio contains all items in Tiro, and vice versa
-			boolean check1 = otherTrio.count(item1) > 0 && otherTrio.count(this.item2) > 0 && otherTrio.count(this.item3) > 0;
-			boolean check2 = this.count(otherTrio.getItem1()) > 0  && this.count(otherTrio.getItem2()) > 0 && this.count(otherTrio.getItem3()) > 0;
+			// if both hold the same item with the same count
+			boolean check1 = this.count(item1) == otherTrio.count(item1);
+			boolean check2 = this.count(item2) == otherTrio.count(item2);
+			boolean check3 = this.count(item3) == otherTrio.count(item3);
 			
-			// return true if they contains each other
-			return check1 && check2;
-			
+			// return true if all true
+			return check1 && check2 && check3;
 		}
 		else
 			return false;
