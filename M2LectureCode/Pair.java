@@ -23,7 +23,7 @@ public class Pair<T> {
 	
 	@Override
 	public String toString() {
-		return item1.toString() + "\t" + item2.toString();
+		return "(" + item1.toString() + " " + item2.toString() + ")";
 	}
 	
 	public boolean sameItems() {

@@ -17,7 +17,9 @@ public class PairTester {
 		PairDifferent<Integer,String> numberWordPair = new PairDifferent<Integer,String>(2, "hello");
 		PairDifferent<Integer,Integer> doubleNumberPair = new PairDifferent<Integer,Integer>(1,1);
 		
-		Quad<PairDifferent> quadTest = new Quad<PairDifferent>(numberWordPair, doubleNumberPair);
+		Quad<Pair> quadTest = new Quad<Pair>(numberPair, wordPair);
+		
+		System.out.println(quadTest);
 
 	}
 

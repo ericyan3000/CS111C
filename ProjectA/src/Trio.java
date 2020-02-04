@@ -47,7 +47,7 @@ public class Trio<T> {
 		item3 = item;
 	}
 	
-	public int count(Object item) {
+	public int count(T item) {
 		int countItem = 0;
 		
 		countItem += item.equals(item1) ? 1 : 0;
@@ -64,7 +64,7 @@ public class Trio<T> {
 	public boolean equals(Object other) {
 		
 		if (other instanceof Trio<?>) {
-			Trio<?> otherTrio = (Trio<?>) other;
+			Trio<T> otherTrio = (Trio<T>) other;
 			
 			// if both hold the same item with the same count
 			boolean check1 = this.count(item1) == otherTrio.count(item1);
