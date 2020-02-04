@@ -8,13 +8,20 @@ public class HomeworkM1Driver {
 		System.out.println("\t" + meetsCriteria("d4x1m4m2", 'x', 'm', 2) + "\texactly 2 m's after x");  
 		System.out.println("\t" + meetsCriteria("vdev4x1v3v", 'e', 'v', 3) + "\texactly 3 v's after x; also 1 extra v before x- that doesn't affect the criteria");
 		System.out.println("\t" + meetsCriteria("d4g1b4gb5", 'g', 'b', 2) + "\texactly 2 b's after the first g; also a second g- that doesn't affect the criteria");
-
+		System.out.println("\t" + meetsCriteria("d4xX1m4m2", 'X', 'm', 2) + "\texactly 2 m's after x");  
+		System.out.println("\t" + meetsCriteria("vdev4VVVx1v3v", 'e', 'V', 3) + "\texactly 3 v's after x; also 1 extra v before x- that doesn't affect the criteria");
+		System.out.println("\t" + meetsCriteria("d4g1B4gbB5", 'g', 'B', 2) + "\texactly 2 b's after the first g; also a second g- that doesn't affect the criteria");
+		
+		
 		System.out.println("\nThese ids do NOT the criteria- should print false.");
 		System.out.println("\t" + meetsCriteria("ad6c4z1a43sh", 'z', 'a', 2) + "\t only 1 a after the z- the other a comes before the z");
 		System.out.println("\t" + meetsCriteria("ddc4f1q4qq", 'f', 'q', 2) + "\t 3 q's after the f");
 		System.out.println("\t" + meetsCriteria("kdc2m1m4rv", 'k', 'm', 1) + "\t no k");
 		System.out.println("\t" + meetsCriteria("sbbbf41n", 'b', 'b', 3) + "\t the first b is the firstChar; there are then only *2* other b's *after* that");
 		System.out.println("\t" + meetsCriteria("sbbbf41n", 'z', 'b', 3));
+		System.out.println("\t" + meetsCriteria("d4x1m4M2", 'x', 'm', 2) + "\t false upper M and lower m not the same");  
+		System.out.println("\t" + meetsCriteria("vdEv4x1v3v", 'e', 'v', 3) + "\t false No lower e");
+		System.out.println("\t" + meetsCriteria("d4g1b4Bgb5", 'g', 'b', 2) + "\t True B and b not the same");
 		
 		System.out.println("\n\n******************************Testing e-Mail Validator (Extra Credit)");
 		// valid
