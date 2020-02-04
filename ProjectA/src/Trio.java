@@ -61,12 +61,13 @@ public class Trio<T> {
 		return item1.equals(item2) || item2.equals(item3) || item1.equals(item3);
 	}
 	
+	@Override
 	public boolean equals(Object other) {
 		
 		if (other instanceof Trio<?>) {
 			Trio<T> otherTrio = (Trio<T>) other;
 			
-			// if both hold the same item with the same count
+			// if both hold sets hold the same item with the same count
 			boolean check1 = this.count(item1) == otherTrio.count(item1);
 			boolean check2 = this.count(item2) == otherTrio.count(item2);
 			boolean check3 = this.count(item3) == otherTrio.count(item3);
