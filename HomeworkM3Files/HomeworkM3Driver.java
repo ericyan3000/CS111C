@@ -181,6 +181,8 @@ public class HomeworkM3Driver {
 	}
 
 	public static boolean isSet(BagInterface<String> wordBag) {
+		BagInterface<String> tempBag = new ArrayBag<String>();
+		
 		
 		
 		// YOUR CODE HERE
