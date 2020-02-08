@@ -3,6 +3,7 @@ import java.util.*;
 public class HomeworkM3Driver {
 
 	public static void main(String[] args) {
+
 		System.out.println("******TESTING QUESTION: COMPARABLE");
 		Person p1 = new Person("Anne", "Teak", 123);
 		Person p2 = new Person("Trina", "Woods", 234);
@@ -19,6 +20,8 @@ public class HomeworkM3Driver {
 		System.out.println("Prints should match:\n[Trina Forest (345), Holly McRel (567), Anne Teak (123), anne teak (678), Holly Wood (456), Holly Wood (789), Trina Woods (234)]");
 		System.out.println(people);
 		
+		
+		/*
 		System.out.println("\n******TESTING QUESTION: TESTING IF BAG IS A SET");
 		BagInterface<String> wordBag = new ArrayBag<>();
 		System.out.println("Prints should match (contents should be the same- order might be different):");
@@ -60,9 +63,9 @@ public class HomeworkM3Driver {
 		setResult = isSet(wordBag);
 		System.out.println(Arrays.toString(wordBag.toArray()));
 		System.out.println("Bag is set? \tfalse: " + setResult);
+		*/
 		
-		
-		
+		/*
 		System.out.println("\n******TESTING QUESTION: CREATING LIST OF WORDS THAT CONTAIN CHAR");
 		ListInterface<String> wordList = new AList<>();
 		ListInterface<String> shortWordList = createWordListContainChar(wordList,'a');
@@ -81,7 +84,7 @@ public class HomeworkM3Driver {
 		System.out.println(Arrays.toString(shortWordList.toArray()));
 		System.out.println("The original list should still contain (in THIS ORDER): \n[apple, anna, bob, ANIMAL, canal, frog, cat]");
 		System.out.println(Arrays.toString(wordList.toArray()));
-
+		*/
 	
 
 		System.out.println("\n******TESTING QUESTION: FINDING LAST POSITION");
@@ -178,33 +181,83 @@ public class HomeworkM3Driver {
 		prioritizeMinimumValue(numberList);
 		System.out.println("\nThe list should contain: \n[0, 2, 4, 3, 5, 7]\n" + numberList);
 
+		System.out.println("==========================================");
+		ListInterface<String> wordList = new AList<String>();
+		wordList.add("apple");
+		wordList.add("banana");
+		wordList.add("carrot"); 
+		wordList.add("watermelon");
+		for(int i=1; i<=wordList.getLength(); i++) {
+		     System.out.println(wordList.remove(i));
+		}
+
+		System.out.println("===========================");
+		BagInterface<String> wordBag = new ArrayBag<String>();
+
+		
+	
+	
 	}
 
 	public static boolean isSet(BagInterface<String> wordBag) {
 		BagInterface<String> tempBag = new ArrayBag<String>();
+		boolean isSet = true;
 		
+		while (!wordBag.isEmpty()) {
+			String word = wordBag.remove(); // get a word from bag
+			isSet = tempBag.contains(word) == true ? false : isSet; // set isSet to false if the word appeared at least once already
+			tempBag.add(word); // add the word to tempBag
+		}
 		
+		while(!tempBag.isEmpty()) {
+ 			wordBag.add(tempBag.remove()); // add all words back to wordBag
+		}
 		
-		// YOUR CODE HERE
-		return false;
+		return isSet;
 	}
 	
 	public static ListInterface<String> createWordListContainChar(ListInterface<String> wordList, char key) {
-		// YOUR CODE HERE
-		return null;
+		ListInterface<String> resultList = new AList<String>();
+		
+		for (int i=1; i<=wordList.getLength(); i++) {
+			String word = wordList.getEntry(i);
+			if (word.indexOf(key) >= 0) 
+				resultList.add(word);
+		}
+		
+		return resultList;
 	}
 	
 	public static int lastPosition(List<String> wordList, String targetWord) {
-		// YOUR CODE HERE
-		return 0;
+		
+		for (int i = wordList.size() - 1; i >= 0; i--) { // iterate the list from the end
+			if (wordList.get(i).equals(targetWord)) // return the first occurrence index
+				return i;
+		}
+	
+		return -1; // return -1 if not found
 	}
 	
 	public static boolean equivalentLists(ListInterface<Integer> numberListInterface, List<Integer> numberList) {
-		// YOUR CODE HERE
-		return false;
+		if (numberListInterface.getLength() == numberList.size()) { // both list have same number of elements
+			for (int i=0; i<numberList.size(); i++) {
+				if (numberListInterface.getEntry(i+1) != numberList.get(i))
+					return false; // return false if one pair of number doesn't match
+			}
+			return true; // everything matches, return true
+		}
+		else
+			return false;
 	}
 	
 	public static void prioritizeMinimumValue(List<Integer> numberList) {
-		// YOUR CODE HERE
+		if (numberList.size() > 0 ) { // if empty do nothing
+			int min = numberList.get(0); // preset min to first number
+			
+			for (int num : numberList) {
+				min = Integer.min(num, min); // update min to the smaller of min and each element.
+			}
+			numberList.add(0,numberList.remove(numberList.indexOf(min))); // remove the min value, and add it to the first position.
+		}
 	}
 }
