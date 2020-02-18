@@ -17,7 +17,7 @@ public class ProjectBTester {
 		System.out.println();
 		
 		System.out.println("\n\n********TESTING ADD TO FRONT");
-		// test addFront to emtpy
+		// test addFront to empty
 		list.addFront(2);
 		System.out.println("Should display:\n1 elements; capacity = 10	[2]");
 		list.display();
