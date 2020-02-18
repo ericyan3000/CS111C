@@ -10,6 +10,10 @@ public class ArrayPractice {
 		//changeArrayIncorrect1(numbers);
 		//changeArrayIncorrect2(numbers);
 		System.out.println("in main after:\t" + Arrays.toString(numbers));
+		
+		AList<Integer> testList = new AList<Integer>();
+		
+		System.out.println(testList.getPosition(2));
 	}
 	
 	public static void changeArrayCorrect(int[] numberArray) {

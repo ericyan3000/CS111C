@@ -231,6 +231,22 @@ public class AList<T extends Comparable<? super T>> implements ListInterface<T> 
 		}
 		return lessThanList;
 	}
+	
+	
+	// @return the position of the first occurrence of the given parameter
+	// return -1 if not found
+	public int getPosition(T anObject) {
+		checkIntegrity();
+		int position = -1; 
+		for (int i = 1; i <= numberOfEntries; i++) {
+			if (list[i].equals(anObject)) { // update position if match found
+				position = i; 
+				break; // break the loop if match found
+			}
+		}
+		
+		return position;
+	}
 
 	
 
