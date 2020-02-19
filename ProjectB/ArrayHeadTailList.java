@@ -3,7 +3,7 @@ import java.util.Arrays;
 
 /**
  * A class of List  whose entries are stored in a fixed-size array.
- * The list could only add element at the begining or the end
+ * The list could only add element at the beginning or the end
  * List index starts from 0
  * 
  * @author Zexi Yan
@@ -14,19 +14,17 @@ public class ArrayHeadTailList<T> implements HeadTailListInterface<T> {
 
 	private T[] listArray;
 	private int numberOfElements;
-	private boolean integrityOK;
-	private static final int DEFAULT_CAPACITY = 25;
 	private static final int MAX_CAPACITY = 10000;
 	
 	
 	public ArrayHeadTailList(int initialCapacity) {
-		integrityOK = false;
+		//integrityOK = false;
 		checkCapacity(initialCapacity); // ensure the capacity is valid
 		
 		if (initialCapacity > 0) {
 			listArray = (T[]) new Object[initialCapacity];
 			numberOfElements = 0;
-			integrityOK = true;
+			//integrityOK = true;
 		}
 	}
 	
