@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -109,8 +108,12 @@ public class ArrayHeadTailList<T> implements HeadTailListInterface<T> {
 	}
 	
 	public void display() {
-		System.out.println(numberOfElements + " elements; " 
-				+ "capacity = " + listArray.length + "\t"
+		String content = numberOfElements + " elements; " 
+				+ "capacity = " + listArray.length;
+		if (isEmpty()) 
+			System.out.println(content);
+		else
+			System.out.println(content + "\t"
 				+ showList());
 	}
 	
