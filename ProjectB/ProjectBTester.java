@@ -171,5 +171,6 @@ public class ProjectBTester {
 		System.out.println("Index of \"it!\" is 2: "+ wordList.indexOf(new String("it!")));
 		System.out.println("Last index of \"it!\" is 2: "+ wordList.lastIndexOf(new String("it!")));
 		
+		
 	}
 }

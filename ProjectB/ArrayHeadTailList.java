@@ -5,7 +5,7 @@ import java.util.Arrays;
  * The list could only add element at the beginning or the end
  * List index starts from 0
  * 
- * @author Zexi Yan
+ * @author Zexi Yan, Stephan Stylianides
  * @version 1.0
  */
 
@@ -30,21 +30,22 @@ public class ArrayHeadTailList<T> implements HeadTailListInterface<T> {
 	
 	// Adds an element at the beginning of the list and shifts all other entries to the right by one position
 	public void addFront(T element) {
+		ensureCapacity(); 
+		
 		for (int i = numberOfElements - 1; i >= 0; i--) {
 			listArray[i+1] = listArray[i];
 		}
 		
 		listArray[0] = element;
-		numberOfElements++; 
-		ensureCapacity(); 
+		numberOfElements++; 	
 	}
 	
 	
 	// Adds an element at the end of the list
-	public void addBack(T element) {
-		listArray[numberOfElements] = element;
-		numberOfElements++;
-		ensureCapacity();
+	public void addBack(T newEntry) {
+	    ensureCapacity();
+	    listArray[numberOfElements] = newEntry;
+	    numberOfElements++;
 	}
 	
 	// removes the first entry and shift all other entries to the left by 1
@@ -61,7 +62,8 @@ public class ArrayHeadTailList<T> implements HeadTailListInterface<T> {
 	}
 	
 	
-	// Removes the last entry
+	// Removes the last entry。
+	/*
 	public T removeBack() {
 		if (!isEmpty()) {
 			T result = listArray[numberOfElements - 1];
@@ -71,6 +73,18 @@ public class ArrayHeadTailList<T> implements HeadTailListInterface<T> {
 		}
 		else
 			return null;
+	}
+	*/
+	public T removeBack() {
+	    T removed;
+	    if (size() == 0) {
+	        return listArray[size()];
+	    } else {
+	        removed = listArray[size()-1];
+	        listArray[size() - 1] = null;
+	        numberOfElements--;
+	    }
+	    return removed;
 	}
 	
 	// Returns true if the element is in the list, false otherwise
@@ -82,7 +96,7 @@ public class ArrayHeadTailList<T> implements HeadTailListInterface<T> {
 		return false;
 	}
 	
-	// @Return the index of the first occurance of the given element in the list
+	// @Return the index of the first occurrence of the given element in the list
 	// @Return -1 if not in the list
 	public int indexOf(T element) {
 		for (int i = 0; i < numberOfElements; i++) {
@@ -91,6 +105,7 @@ public class ArrayHeadTailList<T> implements HeadTailListInterface<T> {
 		}
 		return -1;
 	}
+
 	
 	public int lastIndexOf(T element) {
 		for (int i = numberOfElements - 1; i >= 0; i--) {
@@ -100,9 +115,12 @@ public class ArrayHeadTailList<T> implements HeadTailListInterface<T> {
 		return -1;
 	}
 		
+	
 	public T getEntry(int index) {
-		if (index >= 0 && index <= numberOfElements - 1) 
+		if (index >= 0 && index <= numberOfElements - 1) {
+			assert !isEmpty();
 			return listArray[index];
+		}
 		else
 			return null;
 	}
