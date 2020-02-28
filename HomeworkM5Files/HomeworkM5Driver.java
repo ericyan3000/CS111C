@@ -290,6 +290,24 @@ public class HomeworkM5Driver {
 		
 		
 		
+		System.out.println("Testing Question 11 ~~~~~~~~~~~~~~~");
+		firstNode = new Node<String>(null);
+		System.out.println(Node.findThirdFromLast(firstNode));
+		
+		
+		System.out.println("Testing Question 12 ~~~~~~~~~~~~~~~");
+		firstNode = new Node<String>("a", new Node<String>("b", new Node<String>("c", new Node<String>("d"))));
+		System.out.println(Node.findMiddleElement(firstNode));
+		firstNode = new Node<String>("a", new Node<String>("b", new Node<String>("c", new Node<String>("d", new Node<String>("e")))));
+		System.out.println(Node.findMiddleElement(firstNode));
+		firstNode = new Node<String>("a", new Node<String>("b"));
+		System.out.println(Node.findMiddleElement(firstNode));
+		firstNode = new Node<String>("a");
+		System.out.println(Node.findMiddleElement(firstNode));
+		firstNode = new Node<String>(null);
+		System.out.println(Node.findMiddleElement(firstNode));
+		
+		
 		
 	}
 	
