@@ -12,4 +12,5 @@ public class DoubleNode<T> {
 		next = nextNode;
 		previous = previousNode;
 	}
+
 }
