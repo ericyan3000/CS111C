@@ -1,0 +1,13 @@
+Part B
+
+Question 1
+The tree B built from shuffled list has faster processed time because a tree built from random ordered sequence is more balance, where the left height and right height are in similar magnetite (47 vs 160). The efficiency is closer to O(log n). In tree A and C which are built from sorted list, the efficiency of the BST is close to O(n).
+
+Question 2
+Both duplicated and smaller entry go to the left subtree. So when tree C is built from a descending list, all new entry will go to the left subtree, resulting a tree extremely imbalance with only left subtrees. On the other hand, Tree A occasionally has left subtree (duplicated entry) while most subtrees are on the right (larger entry).
+
+Question 3.
+The efficiency of Tree B is O(log n) and the shuffled list is O(n). So, the tree is faster.
+
+Question 4.
+The BST is more efficient if it¡¯s closer to be a complete tree.

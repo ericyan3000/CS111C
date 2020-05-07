@@ -168,7 +168,6 @@ public class ProjectCTester {
 		wordList.addFront("it!");
 		wordList.addFront("did");
 		wordList.addFront("You");
-		wordList.addFront("it!");
 		System.out.println("Should display:\n[You, did, it!, Nice, job!] \thead=You tail=job!");
 		wordList.display();
 		System.out.println();
@@ -176,8 +175,8 @@ public class ProjectCTester {
 		System.out.println("Contains \"You\"  is true: "+ wordList.contains(new String("You")));
 		System.out.println("Contains \"you\"  is false: "+ wordList.contains(new String("you")));
 		System.out.println();
-		System.out.println("Index of \"it!\" is 0: "+ wordList.indexOf(new String("it!")));
-		System.out.println("Last index of \"it!\" is 3: "+ wordList.lastIndexOf(new String("it!")));
+		System.out.println("Index of \"it!\" is 2: "+ wordList.indexOf(new String("it!")));
+		System.out.println("Last index of \"it!\" is 2: "+ wordList.lastIndexOf(new String("it!")));
 		
 		
 		System.out.println("\n\n********EXTRA CREDIT");
