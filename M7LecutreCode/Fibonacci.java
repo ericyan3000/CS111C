@@ -1,30 +1,38 @@
 import java.time.*;
+import java.util.HashMap;
 
 public class Fibonacci {
 
 	public static void main(String[] args) {
-		int fibNum = 50;
+		int fibNum = 5999;
 		Instant start = Instant.now();
 		System.out.println(fibonacciIterative(fibNum));
 		Instant end = Instant.now();
 		System.out.println("Iterative solution in " + Duration.between(start, end).toMillis() + " milliseconds.");
 		System.out.println(iterativeMethodCounter + " passes through the loop.");
-		start = Instant.now();
-		System.out.println(fibonacciRecusive(fibNum));
-		end = Instant.now();
-		System.out.println("Recursive solution in " + Duration.between(start, end).toMillis() + " milliseconds.");
-		System.out.println(recursiveMethodCounter + " recursive calls.");
 	}
 	
 
 	private static int recursiveMethodCounter = 0;
 	
 	public static long fibonacciRecusive(int n) {
+		HashMap<Integer, Long> fibonacciMap = new HashMap<>();
+		fibonacciMap.put(1, (long) 1);
+		fibonacciMap.put(2, (long) 1);
+		return fibonacciRecursiveHelper(n, fibonacciMap);
+	}
+	
+	private static long fibonacciRecursiveHelper(int n, HashMap<Integer, Long> fibonacciMap) {
 		recursiveMethodCounter++;
 		if (n < 2) {
 			return n;
-		} else {
-			return fibonacciRecusive(n-1) + fibonacciRecusive(n-2);
+		}
+		else if (fibonacciMap.containsKey(n))
+			return fibonacciMap.get(n);
+		else {
+			Long ans = fibonacciRecursiveHelper(n-1, fibonacciMap) + fibonacciRecursiveHelper(n-2, fibonacciMap);
+			fibonacciMap.put(n, ans);
+			return ans;
 		}
 	}
 

@@ -154,40 +154,23 @@ public class BinarySearchTreeWithDups<T extends Comparable<? super T>> extends B
 	// YOUR EXTRA CREDIT CODE HERE! THIS METHOD MUST BE O(n). 
 	// YOU ARE ALLOWED TO USE A HELPER METHOD. THE METHOD CAN BE ITERATIVE OR RECURSIVE. 
 	public int countUniqueValues() {
-		List<T> dupList = new ArrayList<>();
+		Set<T> dupSet = new HashSet<T>();
 		BinaryNode<T> rootNode = getRootNode();
-		int uniqueCount = recursiveCountUniqueValue(rootNode, dupList);
+		recursiveCountUniqueValue(rootNode, dupSet);
 	
-		return uniqueCount;
+		return dupSet.size();
 	}
 	
-	private int recursiveCountUniqueValue(BinaryNode<T> node, List<T> dupList) {
-		int leftCount = 0;
-		int rightCount = 0;
-		int uniqueCount = 0;
+	private void recursiveCountUniqueValue(BinaryNode<T> node, Set<T> dupSet) {
 		if (node != null) {
 			
-			if (!dupList.contains(node.getData())) {
-				uniqueCount = 1;
-				// duplicate could only be find in the largest of leftChild tree
-				// if duplicate, add it to the list
-				if (node.hasLeftChild() && node.getData().equals(findLargest(node.getLeftChild()).getData()))
-						dupList.add(node.getData());
-			}
-			leftCount = recursiveCountUniqueValue(node.getLeftChild(), dupList);
-			rightCount = recursiveCountUniqueValue(node.getRightChild(), dupList);
+			if (!dupSet.contains(node.getData()))
+				dupSet.add(node.getData());
+			
+			recursiveCountUniqueValue(node.getLeftChild(), dupSet);
+			recursiveCountUniqueValue(node.getRightChild(), dupSet);
 		}
-		return uniqueCount + leftCount + rightCount;
 	} 
-	
-	// Finds the node containing the largest entry in a given tree.
-	// rootNode is the root node of the tree.
-	// Returns the node containing the largest entry in the tree.
-	private BinaryNode<T> findLargest(BinaryNode<T> rootNode) {
-		if (rootNode.hasRightChild())
-			rootNode = findLargest(rootNode.getRightChild());
-		return rootNode;
-	} // end findLargest
 	
 	
 	public int getLeftHeight() {
